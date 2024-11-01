@@ -2352,8 +2352,8 @@ This option may be specified multiple times to include multiple glob patterns.
 If both `--test-coverage-exclude` and `--test-coverage-include` are provided,
 files must meet **both** criteria to be included in the coverage report.
 
-Test files are excluded by default. To include test files in code coverage,
-they must be explicitly included by using this parameter.
+By default, the files being tested are excluded from code coverage. They can be explicitly
+included via this flag.
 
 ### `--test-coverage-lines=threshold`
 
