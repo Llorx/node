@@ -1359,6 +1359,8 @@ changes:
     This property is only applicable when `coverage` was set to `true`.
     If both `coverageExcludeGlobs` and `coverageIncludeGlobs` are provided,
     files must meet **both** criteria to be included in the coverage report.
+    Test files are excluded by default. To include test files in code coverage,
+    they must be explicitly included by using this parameter.
     **Default:** `undefined`.
   * `lineCoverage` {number} Require a minimum percent of covered lines. If code
     coverage does not reach the threshold specified, the process will exit with code `1`.

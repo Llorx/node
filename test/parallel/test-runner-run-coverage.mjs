@@ -137,13 +137,13 @@ describe('require(\'node:test\').run coverage settings', { concurrency: true }, 
 
     await it('should run while including and excluding globs', async () => {
       const stream = run({
-        files: [...files, fixtures.path('test-runner/invalid-tap.js')],
+        files: files,
         coverage: true,
         coverageIncludeGlobs: ['test/fixtures/test-runner/*.js'],
         coverageExcludeGlobs: ['test/fixtures/test-runner/*-tap.js']
       });
       stream.on('test:fail', common.mustNotCall());
-      stream.on('test:pass', common.mustCall(2));
+      stream.on('test:pass', common.mustCall(1));
       stream.on('test:coverage', common.mustCall(({ summary: { files } }) => {
         const filesPaths = files.map(({ path }) => path);
         assert.strictEqual(filesPaths.every((path) => !path.includes(`test-runner${sep}invalid-tap.js`)), true);
@@ -157,7 +157,8 @@ describe('require(\'node:test\').run coverage settings', { concurrency: true }, 
       const thresholdErrors = [];
       const originalExitCode = process.exitCode;
       assert.notStrictEqual(originalExitCode, 1);
-      const stream = run({ files, coverage: true, lineCoverage: 99, branchCoverage: 99, functionCoverage: 99 });
+      const stream = run({ files, coverageIncludeGlobs: '**', coverage: true,
+                           lineCoverage: 99, branchCoverage: 99, functionCoverage: 99 });
       stream.on('test:fail', common.mustNotCall());
       stream.on('test:pass', common.mustCall(1));
       stream.on('test:diagnostic', ({ message }) => {

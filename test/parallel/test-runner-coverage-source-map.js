@@ -20,7 +20,7 @@ function generateReport(report) {
 
 const flags = [
   '--enable-source-maps',
-  '--test', '--experimental-test-coverage', '--test-reporter', 'tap',
+  '--test', '--experimental-test-coverage', '--no-warnings', '--test-coverage-include=**', '--test-reporter', 'tap',
 ];
 
 describe('Coverage with source maps', async () => {

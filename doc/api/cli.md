@@ -2352,6 +2352,9 @@ This option may be specified multiple times to include multiple glob patterns.
 If both `--test-coverage-exclude` and `--test-coverage-include` are provided,
 files must meet **both** criteria to be included in the coverage report.
 
+Test files are excluded by default. To include test files in code coverage,
+they must be explicitly included by using this parameter.
+
 ### `--test-coverage-lines=threshold`
 
 <!-- YAML
